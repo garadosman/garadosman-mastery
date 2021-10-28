@@ -8,4 +8,6 @@ public interface TopicStorage {
     void save(Topic topicToSave);
 
     Topic retrieveSingleTopic(long id);
+
+    boolean topicExists(String name);
 }

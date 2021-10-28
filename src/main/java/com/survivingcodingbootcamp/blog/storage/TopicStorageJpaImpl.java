@@ -18,12 +18,21 @@ public class TopicStorageJpaImpl implements TopicStorage {
     }
 
     @Override
+    public void save(Topic topicToSave) {
+        topicRepo.save(topicToSave);
+    }
+
+    @Override
     public Topic retrieveSingleTopic(long id) {
         return topicRepo.findById(id).get();
     }
 
     @Override
-    public void save(Topic topicToSave) {
-        topicRepo.save(topicToSave);
+    public boolean topicExists(String name) {
+        if (topicRepo.findByName(name)!= null){
+            return true;
+    }
+
+    return false;
     }
 }

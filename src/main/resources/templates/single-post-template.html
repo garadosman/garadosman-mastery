@@ -31,7 +31,19 @@
                 Eligendi necessitatibus blanditiis officia, odio deleniti natus molestiae fugiat ex quod vel aliquam
                 illum.
             </p>
+            <h2 th:text = "${post.author}">Author</h2>
+            <ul>
+                <li th:each="hashtag: ${post.hashtags}">
+                    <a th:href="@{'/hashtags/'+ ${hashtag.id}}" th:text="${hashtag.name}"></a>
+                </li>
+            </ul>
+            <form th:action="'/hashtags/add/' + ${post.id}" method="post">
+                <label for="hashtag">Add Hashtag:</label>
+                <input type="text" id="hashtag" name="hashtag">
+                <button type="submit">Submit</button>
+            </form>
         </section>
+
     </main>
 </div>
 
